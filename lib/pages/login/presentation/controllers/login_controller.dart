@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../consts/colors.dart';
-import '../../../../models/loginResponseModel.dart';
 import '../../../../routes/app_routes.dart';
 import '../../../widgets/custom_snackBar.dart';
 import '../../data/login_repository.dart';
@@ -65,6 +64,7 @@ class LoginController extends SuperController<dynamic> {
     var apiResp = loginRepository
         .login(emailController.text, passwordController.text)
         .then((value) {
+      log("value.success${value.success}");
       if (value.success ?? false) {
         Get.toNamed(Routes.HOME);
         customSnackBar(value.message ?? "", const Color(ColorCode.green));

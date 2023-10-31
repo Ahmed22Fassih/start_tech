@@ -35,10 +35,10 @@ class RegisterController extends SuperController<dynamic> {
 
     log(signUpModel.toJson().toString());
 
-    registerRepository.register(signUpModel).then((value) {
-      // Get.toNamed(
-      //   Routes.HOME,
-      // );
+    var apiResp = registerRepository.register(signUpModel).then((value) {
+      Get.toNamed(
+        Routes.HOME,
+      );
       customSnackBar(value.message ?? "", const Color(ColorCode.green));
       isRegisterLoading = false.obs;
       update();

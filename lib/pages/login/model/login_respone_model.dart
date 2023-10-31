@@ -26,10 +26,10 @@ class LoginResponseModel {
 }
 
 class UserData {
-  int? id;
+  String? id;
   String? name;
   String? countryCode;
-  int? phone;
+  String? phone;
   String? email;
   String? token;
   String? tokenExpiry;

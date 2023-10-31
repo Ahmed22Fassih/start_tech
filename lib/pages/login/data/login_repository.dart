@@ -15,14 +15,11 @@ class LoginRepository extends BaseRepository implements ILoginRepository {
 
   @override
   Future<LoginResponseModel> login(String email, String password) async {
-    final apiResponse = await provider.login(email, password);
-    LoginResponseModel loginResponseModel =
-        LoginResponseModel.fromJson(apiResponse.data);
+    final loginResponseModel = await provider.login(email, password);
 
-    if (apiResponse.statusCode == 200 && apiResponse.data) {
-      if (loginResponseModel.success == true) {
-        AuthService.to.login(loginResponseModel);
-      }
+    log("loginResponseModel.success${loginResponseModel.success}");
+    if (loginResponseModel.success ?? false) {
+      AuthService.to.login(loginResponseModel);
       return loginResponseModel;
     } else {
       log(loginResponseModel.message ?? "");

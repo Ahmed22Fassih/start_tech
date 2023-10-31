@@ -18,13 +18,15 @@ class RegisterRepository extends BaseRepository implements IRegisterRepository {
 
   @override
   Future<LoginResponseModel> register(SignUpModel signUpModel) async {
-    final apiResponse = await provider.register(signUpModel);
-    if (apiResponse.isOk && apiResponse.body != null) {
-      AuthService.to.login(apiResponse.body!);
-      return apiResponse.body!;
+    final loginResponseModel = await provider.register(signUpModel);
+
+    log("loginResponseModel.success${loginResponseModel.success}");
+    if (loginResponseModel.success ?? false) {
+      AuthService.to.login(loginResponseModel);
+      return loginResponseModel;
     } else {
-      log(apiResponse.body!.message!);
-      throw (getErrorMessage(apiResponse.body!.message!));
+      log(loginResponseModel.message ?? "");
+      throw (getErrorMessage(loginResponseModel.message ?? ""));
     }
   }
 }
