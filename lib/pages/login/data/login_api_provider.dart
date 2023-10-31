@@ -1,13 +1,8 @@
 import 'package:dio/dio.dart' as DIO;
 import 'package:dio/src/response.dart' as RESPONE;
 
-import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/response/response.dart';
-
 import '../../../base/api_end_points.dart';
 import '../../../base/base_auth_provider.dart';
-import '../../../data/networkUtils.dart';
-import '../../../models/loginResponseModel.dart';
 
 abstract class ILoginProvider {
   Future<DIO.Response> login(String email, String password);
