@@ -5,6 +5,7 @@ import 'package:start_task/consts/colors.dart';
 
 import '../../../../consts/text_style.dart';
 import '../../../../routes/app_routes.dart';
+import '../../../login/model/login_respone_model.dart';
 import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -12,6 +13,7 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    UserData? userData = controller.userInfo?.userData;
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -27,11 +29,11 @@ class HomeView extends GetView<HomeController> {
           child: Column(
             children: [
               gap(),
-              showInfoItem(Icons.person_outline_sharp, "Samir"),
+              showInfoItem(Icons.person_outline_sharp, userData?.name ?? ""),
               gap(),
-              showInfoItem(Icons.phone_android, "+201285829001"),
+              showInfoItem(Icons.phone_android, userData?.phone ?? ""),
               gap(),
-              showInfoItem(Icons.email, "ahmed@gmail.com"),
+              showInfoItem(Icons.email, userData?.email ?? ""),
               gap(),
               sectionItem("Update Information", () {
                 Get.toNamed(Routes.UPDATEINFO);
