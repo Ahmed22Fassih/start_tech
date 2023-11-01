@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../base/base_repository.dart';
 import '../../../services/auth_services.dart';
+import '../../../uitls/globalVar.dart';
 import '../../login/model/login_respone_model.dart';
 import '../model/sign_up_model.dart';
 import 'register_api_provider.dart';

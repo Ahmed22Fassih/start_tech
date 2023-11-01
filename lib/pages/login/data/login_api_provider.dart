@@ -13,7 +13,7 @@ class LoginProvider extends BaseAuthProvider implements ILoginProvider {
   @override
   Future<LoginResponseModel> login(String email, String password) async {
     DIO.Dio dio = DIO.Dio(DIO.BaseOptions(
-      baseUrl: "",
+      baseUrl: EndPoints.baseURl,
     ));
 
     DIO.FormData formData = DIO.FormData.fromMap({
@@ -22,7 +22,7 @@ class LoginProvider extends BaseAuthProvider implements ILoginProvider {
     });
     try {
       DIO.Response resp = await dio.post(
-        EndPoints.baseURl + EndPoints.login,
+        EndPoints.login,
         data: formData,
       );
       print("resp ${resp.data}");

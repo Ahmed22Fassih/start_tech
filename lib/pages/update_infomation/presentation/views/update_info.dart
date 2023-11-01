@@ -15,8 +15,6 @@ import '../controllers/update_info_controller.dart';
 class UpdateInfoView extends GetView<UpdateInfoController> {
   UpdateInfoView({Key? key}) : super(key: key);
 
-  String countryCode = "+2";
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +45,7 @@ class UpdateInfoView extends GetView<UpdateInfoController> {
                 height: 24.h,
               ),
               DefaultTextFormField(
-                controller: TextEditingController(),
+                controller: controller.nameController,
                 hint: "name",
               ),
               SizedBox(
@@ -87,16 +85,16 @@ class UpdateInfoView extends GetView<UpdateInfoController> {
                   showEnglishName: false,
                   labelColor: Colors.black,
                 ),
-                initialSelection: '${countryCode}',
+                initialSelection: '${controller.countryCode}',
                 onChanged: (country) {
-                  countryCode = country?.code.toString() ?? "";
+                  controller.countryCode = country?.code.toString() ?? "";
                 },
               ),
               SizedBox(
                 height: 16.h,
               ),
               EmailTextField(
-                controller: TextEditingController(),
+                controller: controller.emailController,
                 hint: "Email Address",
               ),
               SizedBox(

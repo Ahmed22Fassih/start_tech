@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:start_task/uitls/globalVar.dart';
 
 import '../../../../consts/storage.dart';
 import '../../../login/model/login_respone_model.dart';
@@ -18,6 +19,7 @@ class HomeController extends SuperController<dynamic> {
     super.onInit();
     if (box.hasData(StorageKeys.userDataKey)) {
       userInfo = LoginResponseModel.fromJson(box.read(StorageKeys.userDataKey));
+      GlobalVar.userData = userInfo?.userData;
     }
   }
 

@@ -14,7 +14,7 @@ class RegisterProvider extends BaseAuthProvider implements IRegisterProvider {
   @override
   Future<LoginResponseModel> register(SignUpModel signUpModel) async {
     DIO.Dio dio = DIO.Dio(DIO.BaseOptions(
-      baseUrl: "",
+      baseUrl: EndPoints.baseURl,
     ));
 
     DIO.FormData formData = DIO.FormData.fromMap({
@@ -27,7 +27,7 @@ class RegisterProvider extends BaseAuthProvider implements IRegisterProvider {
     });
     try {
       DIO.Response resp = await dio.post(
-        EndPoints.baseURl + EndPoints.register,
+        EndPoints.register,
         data: formData,
       );
       print("resp ${resp.data}");

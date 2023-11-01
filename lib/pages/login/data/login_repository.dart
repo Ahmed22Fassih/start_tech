@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import '../../../base/base_repository.dart';
 import '../../../services/auth_services.dart';
+
+import '../../../uitls/globalVar.dart';
 import '../model/login_respone_model.dart';
 import 'login_api_provider.dart';
 
