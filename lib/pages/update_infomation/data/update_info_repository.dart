@@ -19,7 +19,6 @@ class UpdateInfoRepository extends BaseRepository
       String name, String email, String code) async {
     final loginResponseModel = await provider.updateInfo(name, email, code);
 
-    log("loginResponseModel.success${loginResponseModel.success}");
     if (loginResponseModel.success ?? false) {
       AuthService.to.login(loginResponseModel);
       return loginResponseModel;
